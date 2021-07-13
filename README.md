@@ -55,9 +55,11 @@ Recall（召回率）指的是在所有应该被检测到的对象中，识别�
 
 ### (1) 计算AP（Average Precision）
 
-首先，对检测器生成的预测框的置信度由高到低进行排序，再计算预测和实际标签框的IOU,若IOU >= 0.5,判断其为TP，若IOU < 0.5,判断其为FP
+关于AP，其官方定义如下：
+> Compute a version of the measured precision/recall curve with precision monotonically decreasing, by setting the precision for recall r to the maximum precision obtained for any recall r′ ≥ r.
+Compute the AP as the area under this curve by numerical integration. No approximation is involved since the curve is piecewise constant.
 
-其次，分别设置一定的置信度阈值，无视所有的小于该阈值的预测框，据此得到多组Precision & Recall值（以下称PR值），制作P/R曲线，示例如下：
+本质上来说，AP表示不同召回率下的精度
 
 ![image](https://raw.githubusercontent.com/zzr2311559/Explanations-for-parameters-in-YOLOv5/master/imgfile/PR%20graph.png)
 
